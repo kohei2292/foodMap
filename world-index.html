@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界名産マップ - 世界の名産品を地図で発見</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="world-styles.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-globe-americas"></i> 世界名産マップ</h1>
+                <p>世界の名産品を地図で発見しよう</p>
+                <div class="mode-switch">
+                    <a href="index.html" class="mode-btn">🇯🇵 日本版</a>
+                    <a href="world-index.html" class="mode-btn active">🌍 世界版</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search and Filter Section -->
+        <div class="controls">
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="名産品や国・地域を検索...">
+                    <button id="clearSearch" class="clear-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="filter-container">
+                <select id="continentFilter" class="filter-select">
+                    <option value="">すべての大陸</option>
+                    <option value="アジア">アジア</option>
+                    <option value="ヨーロッパ">ヨーロッパ</option>
+                    <option value="北アメリカ">北アメリカ</option>
+                    <option value="南アメリカ">南アメリカ</option>
+                    <option value="アフリカ">アフリカ</option>
+                    <option value="オセアニア">オセアニア</option>
+                    <option value="中東">中東</option>
+                </select>
+                
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">すべてのカテゴリ</option>
+                    <option value="果物">果物</option>
+                    <option value="野菜">野菜</option>
+                    <option value="海産物">海産物</option>
+                    <option value="肉類">肉類</option>
+                    <option value="米・穀物">米・穀物</option>
+                    <option value="お菓子">お菓子</option>
+                    <option value="飲み物">飲み物</option>
+                    <option value="その他">その他</option>
+                </select>
+                
+                <select id="seasonFilter" class="filter-select">
+                    <option value="">すべての季節</option>
+                    <option value="春">春</option>
+                    <option value="夏">夏</option>
+                    <option value="秋">秋</option>
+                    <option value="冬">冬</option>
+                    <option value="通年">通年</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Map Container -->
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <h3><i class="fas fa-list"></i> 名産品一覧</h3>
+                    <span id="resultCount" class="result-count">0件</span>
+                </div>
+                
+                <div class="sidebar-content">
+                    <div id="productList" class="product-list">
+                        <!-- Products will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Detail Modal -->
+        <div id="productModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modalContent">
+                    <!-- Product details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="world-data.js"></script>
+    <script src="world-script.js"></script>
+</body>
+</html>
